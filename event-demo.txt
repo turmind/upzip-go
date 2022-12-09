@@ -1,0 +1,38 @@
+{
+    "Records": [
+        {
+            "eventVersion": "2.1",
+            "eventSource": "aws:s3",
+            "awsRegion": "ap-southeast-1",
+            "eventTime": "2022-12-02T07:25:43.100Z",
+            "eventName": "ObjectCreated:Put",
+            "userIdentity": {
+                "principalId": "AWS:AIDA5DGG3Z7QQ3UIU4GTS"
+            },
+            "requestParameters": {
+                "sourceIPAddress": "54.240.199.98"
+            },
+            "responseElements": {
+                "x-amz-request-id": "7X7N5ZM53GE0K2M4",
+                "x-amz-id-2": "c2XUtypYahQn8GXT1V5ja4A9Olq399zskQgqWAGoo5JpnYnqdd7/kFsvX16o25wnXUrjbcbkkvoPRa4EsJCRY3Rlg+PSuc9I"
+            },
+            "s3": {
+                "s3SchemaVersion": "1.0",
+                "configurationId": "39417f7f-2874-4ed3-9691-7e710bc1ccb6",
+                "bucket": {
+                    "name": "unzip-file",
+                    "ownerIdentity": {
+                        "principalId": "A1TE1NMOB9GT94"
+                    },
+                    "arn": "arn:aws:s3:::unzip-file"
+                },
+                "object": {
+                    "key": "test/apk.zip",
+                    "size": 7382,
+                    "eTag": "dc288930a14fba7d97036f675fad39d9",
+                    "sequencer": "006389A8770CD18686"
+                }
+            }
+        }
+    ]
+}
