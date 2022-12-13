@@ -92,10 +92,17 @@ func LambdaHandler(context context.Context, s3Event events.S3Event) (message str
 				defer func() {
 					<-rate
 				}()
-				if err := upload(bucket, path, prefix); err == nil {
-					atomic.AddInt32(&uploadFileNumber, 1)
-				} else {
-					log.Println("upload file fail: ", err)
+				for i := 0; i < 100; i++ {
+					if err := upload(bucket, path, prefix); err == nil {
+						atomic.AddInt32(&uploadFileNumber, 1)
+						break
+					} else {
+						time.Sleep(1 * time.Second)
+						if i == 99 {
+							log.Println("upload file fail: ", err)
+						}
+					}
+
 				}
 			}(s3record.Bucket.Name, path, prefix)
 		}
