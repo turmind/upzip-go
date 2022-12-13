@@ -162,7 +162,6 @@ func upload(bucket string, path string, prefix string) error {
 		log.Println("Failed opening file", path, err)
 		return err
 	}
-	defer file.Close()
 	_, err = uploader.Upload(&s3manager.UploadInput{
 		Bucket: &bucket,
 		Key:    aws.String(prefix + strings.Replace(path, "/tmp/zip/", "", 1)),
@@ -170,9 +169,10 @@ func upload(bucket string, path string, prefix string) error {
 	})
 	if err != nil {
 		log.Println("Failed upload file", path, err)
+		file.Close()
 		return err
 	}
-	log.Println("upload success: ", path)
+	file.Close()
 	return nil
 }
 
